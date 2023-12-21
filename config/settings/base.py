@@ -47,11 +47,12 @@ LOCALE_PATHS = [str(BASE_DIR / "locale")]
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
 DATABASES = {
-    "default": env.db(
+    "default": env.db_url(
         "DATABASE_URL",
         default="postgres:///laundry_express",
     ),
 }
+
 DATABASES["default"]["ATOMIC_REQUESTS"] = True
 # https://docs.djangoproject.com/en/stable/ref/settings/#std:setting-DEFAULT_AUTO_FIELD
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
@@ -90,7 +91,7 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     "laundry_express.users",
-    # Your stuff: custom apps go here
+    "laundry_express.customers",
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
